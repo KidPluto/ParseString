@@ -29,15 +29,6 @@ public class ParsingExampleApplicationTests {
 		assertNotNull(hw);
 
 	}
-	@Test
-    public void TestRemoveSpaces() {
-        String NoSpace = new String("ABC");
-
-        ParsingExample pe = new ParsingExample();
-        pe.setOriginalString("ABC");
-//        pe.RemoveSpaces()
-
-    }
 
 	@Test
 	protected void TestForMatchingParens(String str) {}

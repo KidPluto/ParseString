@@ -29,7 +29,7 @@ public class ParseExample_2 {
         // Do I want this instead?  ArrayList<String> myTokens = (ArrayList) tokens;
         System.out.print("The tokens are: ");
         for(String token: tokens) {
-            System.out.print(token + "; ");
+            System.out.print(token + " ");
         }
         System.out.println();
 
@@ -136,7 +136,7 @@ public class ParseExample_2 {
     // Second attempt
     //
     // Using the for each looping, I don't know where in the list I am, to be able to create the new list
-    // Let try changeing to a for loop
+    // Let try changing to a for loop
     //
     // for loop
     // tokens.get(i) will return the string token
@@ -144,77 +144,63 @@ public class ParseExample_2 {
 
     private void findMatchingParen(List<String> tokens, Integer indentLevel) {
 
+       System.out.println("debug =========== start of method");
+
         for(int i=0; i<tokens.size(); i++) {
 
             String currentToken = tokens.get(i);
 
-            System.out.println("debug =========================");
+//            System.out.println("debug =========================");
 
             //=========================================================================================
             // token starts with open parenthesis; drop paren; print/store token; make recursive call;
+            //
             if( tokens.get(i).startsWith(openParenStr)) {
-//                System.out.println("debug Token starts with open paren: [ " + currentToken + " ], at indent level: " + indentLevel);
-
-                String tokenWithoutOpenParen = new String(currentToken.substring(1));
-
-                System.out.println("Print/store this: [ " + tokenWithoutOpenParen + " ], at indent level: " + indentLevel);
+               String tokenWithoutOpenParen = new String(currentToken.substring(1));
                 List<String> newListOfTokens = new ArrayList<String>();
-
                 newListOfTokens.add(tokenWithoutOpenParen);
-
                 // Copy over all other items to new list of tokens
                 for (int j = i+1; j < tokens.size(); j++) {
                     newListOfTokens.add(tokens.get(j));
                 }
-                System.out.println("debug newListOfTokens: " + newListOfTokens);
-
                 // Recursive call, with new list of tokens, and indent level incremented
                 findMatchingParen(newListOfTokens, ++indentLevel);
-//                indentLevel--;
+                indentLevel--;
+                break;
             }
             //=========================================================================================
-            // token contains open parenthesis; ...
-            // employee(id
-            // Extract "employee" print/store it
-            // Create new list of tokens, "(id ..."
-            // Make recusive call
+            // token contains open parenthesis; ... employee(id Extract "employee" print/store it
+            // Create new list of tokens, "(id ..."  Make recusive call
             //
             else if (currentToken.contains(openParenStr)) {
-//                System.out.println("debug Token contains open paren: [ " + currentToken + " ], at indent level: " + indentLevel);
-
                 String tokenBeforeOpenParen = new String(currentToken.substring(0, currentToken.indexOf(openParen)));
                 String tokenStartingWithOpenParen = new String(currentToken.substring(currentToken.indexOf(openParen), (currentToken.length())));
-
-                System.out.println("Print/store this: [ " + tokenBeforeOpenParen + " ], at indent level: " + indentLevel);
-
+                System.out.println(indentLevel + " " + tokenBeforeOpenParen);
                 List<String> newListOfTokens = new ArrayList<String>();
                 newListOfTokens.add(tokenStartingWithOpenParen);
                 // Copy over all other items to new list of tokens
                 for (int j=i+1; j < tokens.size(); j++) {
                     newListOfTokens.add(tokens.get(j));
                 }
-                System.out.println("debug newListOfTokens: " + newListOfTokens);
                 // Recursive call, with new list of tokens, and indent level incremented
                 findMatchingParen(newListOfTokens, ++indentLevel);
-//                indentLevel--;
+                indentLevel--;
+                break;
             }
             //=========================================================================================
             // token ends with close parenthesis; drop paren; print/store the token; continue
+            //
             else if (currentToken.endsWith(closeParenStr)) {
-//                System.out.println("debug Token ends with close paren: [ " + currentToken + " ], at indent level: " + indentLevel);
-//                indentLevel--;
                 String tokenWithoutClosingParen = new String (currentToken.substring(0, currentToken.length()-1));
-                System.out.println("Print/store this: [ " + tokenWithoutClosingParen + " ], at indent level: " + indentLevel);
+                System.out.println(indentLevel + " " + tokenWithoutClosingParen);
+                break;
             }
             //=========================================================================================
             // token has no parentheses; print/store the token; continue
+            //
             else {
-//                System.out.println("debug Token has no parens: [ " + currentToken + " ], at indent level: " + indentLevel);
-                System.out.println("Print/store this: [ " + currentToken + " ], at indent level: " + indentLevel);
+                System.out.println(indentLevel + " " + currentToken);
             }
-            System.out.println("debug === end for loop ===");
-            System.out.println("debug");
-//            indentLevel--;
         } // end for loop
     }
 

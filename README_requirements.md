@@ -1,4 +1,3 @@
-Frontline Education Code Challenge
 Parameters
 1. Should be solved in a language which demonstrates your skill for the position you have applied.
 2. Deliver a working runnable solution and include a copy of the source code.

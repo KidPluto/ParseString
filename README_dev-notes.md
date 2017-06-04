@@ -1,7 +1,4 @@
 
-parenthesis fix this every place!
-parentheses 
-
 Assumptions:
 * Commas are delimiters.
 * There must be the same number of open and close parentheses.
@@ -72,8 +69,7 @@ What would it look like if I broken it up on the parens?  I would need to be abl
 
 * sudo code - third attempt
 
-Recusion like this?
-Can I get rid of found-left-paren input parameter?
+Recusion like this maybe?
 ```
 call find-matching-paren (full-list-of-tokens, false, 0)
 
@@ -92,3 +88,10 @@ find-matching-paren (tokens, found-left-paren, indent-level)
     end loop
 ```
 
+Guide to the code
+
+* ParsingExample.java - my first attempt
+* ParseExample.java - my second and third attempts
+
+
+* Wasn't successful at solving the problem

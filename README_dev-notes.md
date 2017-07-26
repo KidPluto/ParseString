@@ -6,7 +6,7 @@ Assumptions:
 * Solution needs to be able to handle any number of legal/matching parentheses.
 * The space between "```(id),``` and  ```lastname``` in the example input string is not a typo, showing that spaces can be ignored.
 * ```()```, ```id)id```, ```((``` and ```))``` are not legal
-* Closing parentheses are followed by comma, ex: ```),```, with the exception of the last one.
+* Closing parentheses are followed by comma, ex: ```),``` with the exception of the last one.
 * Nothing is allowed to follow the close parenthesis, which matches the first open parenthesis.  Ex: ```(employee(name1, name2),id),job(job1,job2),id)```
 * The solution will also work on other "legal" strings.  Ex: ```(employee(name1, name2),id,job(job1,job2),id)```
 
